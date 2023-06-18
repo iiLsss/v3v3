@@ -148,3 +148,51 @@ route
 ```
 pnpm install vue-router
 ```
+
+
+测试
+
+```
+pnpm install @babel/core @babel/preset-env @babel/preset-typescript  -D
+pnpm install jest ts-jest ts-node @types/node @types/jest babel-jest @vue/vue3-jest -D
+pnpm install  @vue/test-utils@next jest-transform-stub -D
+```
+
+```
+
+● Validation Error:
+
+  Test environment jest-environment-jsdom cannot be found. Make sure the testEnvironment configuration option points to an existing node module.
+
+  Configuration Documentation:
+  https://jestjs.io/docs/configuration
+
+
+As of Jest 28 "jest-environment-jsdom" is no longer shipped by default, make sure to install it separately.
+ ELIFECYCLE  Test failed. See above for more details.
+
+ pnpm add --save-dev jest-environment-jsdom
+```
+
+```
+ FAIL  src/pages/TodoApp.spec.ts
+  ● Test suite failed to run
+    ReferenceError: Vue is not defined   
+    > 1 | import { mount } from "@vuetest-utils"  
+      2 | import TodoApp from "@/pages/TodoApp.vue" 
+      3 |
+      4 | describe("TodoApp.vue", () => {
+
+      at Object.<anonymous> (node_modules/.pnpm/@vue+test-utils@2.4.0-alpha.2_vue@3.3.4/node_modules/@vue/test-utils/dist/vue-test-utils.browser.js:8385:8)
+      at Object.<anonymous> (src/pages/TodoApp.spec.ts:1:1)
+
+https://github.com/vuejs/vue-jest/issues/479
+
+
+```
+
+
+```
+pnpm install cypress -D
+pnpm install @cypress/vue@next @cypress/vite-dev-server -D
+```
